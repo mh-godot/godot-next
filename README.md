@@ -60,4 +60,3 @@ That's it! I hope you've got ideas of what you'd like to share with others.
 
 # Nodes
 
-* HoverContainer \#gui \#Control \#hover
