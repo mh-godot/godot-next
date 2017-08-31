@@ -60,7 +60,7 @@ If you would like to add your own node to the repository, do the following:
     1. the new directory with an UpperCamelCase name.
     2. the script file with an UpperCamelCase name (with contributor credits).
     3. the .png file with a icon\_prefixed\_snake\_case name.
-    4. the modified godot-next-plugin.gd file to add and remove your node from the editor.
+    4. the modified `godot_next_plugin.gd` file to add and remove your node from the editor.
     5. the modified README.md file to add your node to the description of the repository's content.
 
 10. Submit a pull request to the original repository
@@ -77,7 +77,7 @@ That's it! I hope you've got ideas of what you'd like to share with others.
 
 |Linkable Node Name|Description|Tags
 |-|-|-|
-|[HoverContainer](gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks|\#gui \#Control \#hover
+|[HoverContainer](addons/godot-next/gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks|\#gui \#Control \#hover
 
 # Work In Progress Nodes
 
