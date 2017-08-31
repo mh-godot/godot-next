@@ -23,8 +23,8 @@ var _lc = "hover_container_left_click"
 var _rc = "hover_container_right_click"
 
 func _ready():
-	connect("mouse_entered", self, "on_mouse_entered")
-	connect("mouse_exited", self, "on_mouse_exited")
+	connect("mouse_entered", self, "_on_mouse_entered")
+	connect("mouse_exited", self, "_on_mouse_exited")
 	_setup_actions()
 
 func _fixed_process(p_delta):
@@ -51,10 +51,10 @@ func _fixed_process(p_delta):
 		if Input.is_action_just_pressed(_rc):
 			emit_signal("mouse_right_clicked", _last_mouse_position, true_speed)
 
-func on_mouse_entered():
+func _on_mouse_entered():
 	_is_hovering = true
 
-func on_mouse_exited():
+func _on_mouse_exited():
 	_is_hovering = false
 
 func _setup_actions():
