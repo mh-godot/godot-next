@@ -20,12 +20,12 @@ If you would like to add your own node to the repository, do the following:
 5. Inside the new folder, attach the content necessary for your node. For GDScript, this would be a `.gd` file. For CSharp (when it's available), this would be a `.cs` file (as far as I know).
 
 - Be sure to include in your node a comment at the top saying "Contributors" along with a subsequent comment detailing your GitHub username after a hyphen. For example:
-
+```
     # Contributors
     # - willnationsdev
-
+```
 - Please keep the content of your script in the appropriate style for the type of script you are making to maintain consistency. `.gd` files should use snake_case for non-script-type, non-packed-scene-type variable names. `.cs` files likewise should use UpperCamelCase for typenames and lowerCamelCase for variable and function names. For example:
-
+```
     # GDScript
     var my_var = null
     var ScriptType = preload("res://script.gd")
@@ -34,7 +34,7 @@ If you would like to add your own node to the repository, do the following:
     // CSharp
     public int myVar = null;
     public class MyClass {};
-
+```
 6. Also inside the new folder, you should have a 16x16 .png image file that appears as consistent as possible with the editor's pre-existing node images. The name of the file should follow the pattern: icon\_(snake\_case\_node\_name).png. For example, for the type MyNode, the proper name would be `icon\_my\_node.png`.
 
 7. Once you have your script and image file handy, go to the `godot-next-plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files.
