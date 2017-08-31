@@ -1,3 +1,4 @@
+
 # godot-next
 
 Godot Node Extensions, AKA Godot NExt, is a repository dedicated to collecting basic node extensions that are currently unavailable in vanilla Godot.
@@ -38,7 +39,7 @@ If you would like to add your own node to the repository, do the following:
 
 7. Once you have your script and image file handy, go to the `godot-next-plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files.
 
-8. Go to the README.md file and add the name of any added nodes to the list of included nodes along with any hashtags you would like to attach (please keep it to 3 or less). If possible, try to find a space nearby other nodes of a similar type.
+8. Go to the README.md file and add the name of any added nodes to the list of included nodes along with any hashtags you would like to attach (please keep it to 3 or less). The name of the node should be a relative link to its location in the repository. The name of the node should be a relative link to its location in the repository. If possible, try to find a space nearby other nodes of a similar type.
 
 9. Commit and push all of your changes
 
@@ -59,4 +60,7 @@ If you find any problems with a particular plugin or have suggestions for improv
 That's it! I hope you've got ideas of what you'd like to share with others.
 
 # Nodes
+
+|Linkable Node Name|Description|Tags
+|-|-|-|
 
