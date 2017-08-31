@@ -42,11 +42,11 @@ If you would like to add your own node to the repository, do the following:
 
 9. Commit and push all of your changes
 
-  1. the new directory with an UpperCamelCase name.
-  2. the script file with an UpperCamelCase name (with contributor credits).
-  3. the .png file with a icon\_prefixed\_snake\_case name.
-  4. the modified godot-next-plugin.gd file to add and remove your node from the editor.
-  5. the modified README.md file to add your node to the description of the repository's content.
+    1. the new directory with an UpperCamelCase name.
+    2. the script file with an UpperCamelCase name (with contributor credits).
+    3. the .png file with a icon\_prefixed\_snake\_case name.
+    4. the modified godot-next-plugin.gd file to add and remove your node from the editor.
+    5. the modified README.md file to add your node to the description of the repository's content.
 
 10. Submit a pull request to the original repository
 
