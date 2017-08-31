@@ -6,6 +6,9 @@
 # mouse clicks occur over it as well as periodic emissions while the mouse
 # is hovering over it. The rate at which hover signals are emitted can be
 # controlled from the editor.
+# 
+# Known Issues:
+# The 2.1 version does not respond to quickly repeating left/right mouse clicks
 
 extends Container
 
