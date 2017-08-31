@@ -78,7 +78,7 @@ That's it! I hope you've got ideas of what you'd like to share with others.
 
 |Linkable Node Name|Description|Tags
 |-|-|-|
-|[HoverContainer](gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks|\#gui \#Control \#hover
+|[HoverContainer](addons/godot-next/gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks|\#gui \#Control \#hover
 
 # Work In Progress Nodes
 
