@@ -34,7 +34,7 @@ If you would like to add your own node to the repository, do the following:
     public int myVar = null;
     public class MyClass {};
 ```
-6. Also inside the new folder, you should have a 16x16 .png image file that appears as consistent as possible with the editor's pre-existing node images. The name of the file should follow the pattern: icon\_(snake\_case\_node\_name).png. For example, for the type MyNode, the proper name would be `icon\_my\_node.png`.
+6. Also inside the new folder, you should have a 16x16 .png image file that appears as consistent as possible with the editor's pre-existing node images. The name of the file should follow the pattern: icon\_(snake\_case\_node\_name).png. For example, for the type MyNode, the proper name would be `icon_my_node.png`.
 
 7. Once you have your script and image file handy, go to the `godot-next-plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files.
 
