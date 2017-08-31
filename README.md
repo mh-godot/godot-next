@@ -1,6 +1,6 @@
 # godot-next
 
-Godot NExt is a repository dedicated to collecting basic node extensions that are currently unavailable in vanilla Godot.
+Godot Node Extensions, AKA Godot NExt, is a repository dedicated to collecting basic node extensions that are currently unavailable in vanilla Godot.
 
 As you might have noticed, Godot Engine's initial node offerings are general purpose and are intentionally not oriented towards particular types of games.
 
@@ -54,6 +54,8 @@ If you would like to add your own node to the repository, do the following:
 That's it! I hope you've got ideas of what you'd like to share with others.
 
 Also, if you would like to make edits to an existing node, don't forget to add your name to the list of contributors within that node's script.
+
+If you find any problems with a particular plugin or have suggestions for improving it and would like to launch a discussion, please create an Issue and mention one of the active developers associated with it (you can click on the file and then click on the History button to see a list of commits that have edited the file. Common usernames will give you an idea of who to mention).
 
 # Nodes
 
