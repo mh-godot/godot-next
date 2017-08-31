@@ -1,5 +1,11 @@
-# Contributors
+# Contributors:
 # - willnationsdev
+#
+# Description:
+# HoverContainer is a simple container that emits signals when left/right 
+# mouse clicks occur over it as well as periodic emissions while the mouse
+# is hovering over it. The rate at which hover signals are emitted can be
+# controlled from the editor.
 
 extends Container
 
@@ -7,11 +13,14 @@ signal mouse_hovering(position, velocity)
 signal mouse_left_clicked(position, velocity)
 signal mouse_right_clicked(position, velocity)
 
-export var hover_emission_rate = 1.0
+export var _hover_emission_rate = 1.0 setget set_hover_emission_rate, get_hover_emission_rate
 
-var is_hovering = false
+var _is_hovering = false setget , is_hovering
 var _hover_accumulator = 0.0
-var last_mouse_position = Vector2(0,0)
+var _last_mouse_position = Vector2(0,0) setget , get_last_mouse_position
+
+var _lc = "hover_container_left_click"
+var _rc = "hover_container_right_click"
 
 func _ready():
 	connect("mouse_entered", self, "on_mouse_entered")
@@ -21,55 +30,58 @@ func _ready():
 func _fixed_process(p_delta):
 	_hover_accumulator += p_delta
 	
-	# Needed because Input.get_last_mouse_speed() does not update when not moving between frames.
-	# Ergo, a steady mouse will not return Vector2(0,0).
+	# Needed because Input.get_last_mouse_speed() does not update when not
+	# moving between frames. Ergo, a steady mouse will not return Vector2(0,0).
 	var true_speed = Vector2(0,0)
 	
-	if is_hovering:
-		if _hover_accumulator >= hover_emission_rate:
-			if get_viewport().get_mouse_position() != last_mouse_position:
+	if _is_hovering:
+		if _hover_accumulator >= _hover_emission_rate:
+			if get_viewport().get_mouse_position() != _last_mouse_position:
 				true_speed = Input.get_last_mouse_speed()
 			
-			last_mouse_position = get_viewport().get_mouse_position()
+			_last_mouse_position = get_viewport().get_mouse_position()
 			
-			emit_signal("mouse_hovering", last_mouse_position, true_speed)
+			emit_signal("mouse_hovering", _last_mouse_position, true_speed)
 			
-			while _hover_accumulator >= hover_emission_rate:
-				_hover_accumulator -= hover_emission_rate
+			while _hover_accumulator >= _hover_emission_rate:
+				_hover_accumulator -= _hover_emission_rate
 		
-		if Input.is_action_just_pressed("hover_container_left_click"):
-			emit_signal("mouse_left_clicked", last_mouse_position, true_speed)
-		if Input.is_action_just_pressed("hover_container_right_click"):
-			emit_signal("mouse_right_clicked", last_mouse_position, true_speed)
+		if Input.is_action_just_pressed(_lc):
+			emit_signal("mouse_left_clicked", _last_mouse_position, true_speed)
+		if Input.is_action_just_pressed(_rc):
+			emit_signal("mouse_right_clicked", _last_mouse_position, true_speed)
 
 func on_mouse_entered():
-	is_hovering = true
+	_is_hovering = true
 
 func on_mouse_exited():
-	is_hovering = false
+	_is_hovering = false
 
 func _setup_actions():
-	var lc = "hover_container_left_click"
-	var rc = "hover_container_right_click"
-	
-	if not InputMap.has_action(lc):
-		InputMap.add_action(lc)
+	if not InputMap.has_action(_lc):
+		InputMap.add_action(_lc)
 		var ev = InputEventMouseButton.new()
 		ev.set_button_index(BUTTON_LEFT)
 		ev.set_doubleclick(false)
 		ev.set_factor(1)
-		InputMap.action_add_event(lc,ev)
+		InputMap.action_add_event(_lc,ev)
 	
-	if not InputMap.has_action(rc):
-		InputMap.add_action(rc)
+	if not InputMap.has_action(_rc):
+		InputMap.add_action(_rc)
 		var ev = InputEventMouseButton.new()
 		ev.set_button_index(BUTTON_RIGHT)
 		ev.set_doubleclick(false)
 		ev.set_factor(1)
-		InputMap.action_add_event(rc,ev)
+		InputMap.action_add_event(_rc,ev)
 
 func is_hovering():
-	return is_hovering
+	return _is_hovering
 
 func get_last_mouse_position():
-	return last_mouse_position
+	return _last_mouse_position
+
+func set_hover_emission_rate(p_hover_rate):
+	_hover_emission_rate = p_hover_rate
+
+func get_hover_emission_rate():
+	return _hover_emission_rate

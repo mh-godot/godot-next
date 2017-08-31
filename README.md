@@ -11,7 +11,7 @@ If you would like to add your own node to the repository, do the following:
 
 1. Fork the repository to your GitHub.
 
-2. Clone the repository.
+2. Clone the repository and switch to the branch (major.minor engine version) you are adding a node for.
 
 3. Identify a place in the repository folder hierarchy that seems appropriate for your node. Folders should be named in association with a related topic. If you must create new directories, please follow a snake_case naming scheme when creating topical directories.
 
@@ -49,13 +49,15 @@ If you would like to add your own node to the repository, do the following:
   4. the modified godot-next-plugin.gd file to add and remove your node from the editor.
   5. the modified README.md file to add your node to the description of the repository's content.
 
-10. Submit a pull request to the original repository.
+10. Submit a pull request to the original repository
 
-That's it! I hope you've got ideas of what you'd like to share with others.
+If you would like to make edits to an existing node, don't forget to add your name to the list of contributors within that node's script.
 
-Also, if you would like to make edits to an existing node, don't forget to add your name to the list of contributors within that node's script.
+If possible, please try to create working scripts for each version of the engine supported by the branches. One way that you as a community member can help is by porting existing nodes from one engine version to another.
 
 If you find any problems with a particular plugin or have suggestions for improving it and would like to launch a discussion, please create an Issue and mention one of the active developers associated with it (you can click on the file and then click on the History button to see a list of commits that have edited the file. Common usernames will give you an idea of who to mention).
+
+That's it! I hope you've got ideas of what you'd like to share with others.
 
 # Nodes
 
