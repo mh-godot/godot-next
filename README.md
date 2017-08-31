@@ -24,12 +24,11 @@ If you would like to add your own node to the repository, do the following:
     # Contributors
     # - willnationsdev
 ```
-- Please keep the content of your script in the appropriate style for the type of script you are making to maintain consistency. `.gd` files should use snake_case for non-script-type, non-packed-scene-type variable names. `.cs` files likewise should use UpperCamelCase for typenames and lowerCamelCase for variable and function names. For example:
+- Please keep the content of your script in the appropriate style for the type of script you are making to maintain consistency. `.gd` files should use snake_case for non-script-type variable names. `.cs` files likewise should use UpperCamelCase for typenames and lowerCamelCase for variable and function names. For example:
 ```
     # GDScript
     var my_var = null
     var ScriptType = preload("res://script.gd")
-    var SceneType = preload("res://scene.tscn")
 
     // CSharp
     public int myVar = null;
