@@ -1,4 +1,3 @@
-
 # godot-next
 
 Godot Node Extensions, AKA Godot NExt, is a repository dedicated to collecting basic node extensions that are currently unavailable in vanilla Godot.
@@ -7,6 +6,21 @@ As you might have noticed, Godot Engine's initial node offerings are general pur
 
 The intent is to create nodes that fulfill a particular function and work out-of-the-box. Users should be able to use your node immediately after adding it to their project.
 Ideally, these are single nodes rather than whole systems of nodes (for that, you might be better off building a separate repository for that system).
+
+## How to Use
+
+(if on Asset Library) Simply plugin the asset from the Asset Library browser.
+(else) Download the repository as a .zip. Unzip the archive and copy the files into your project directory.
+
+## How to Contribute
+
+### Ideas
+If you have an idea for a node that you would like to have added to the repository, create a new Issue.
+
+### In Progress
+Work-in-progress nodes should be kept in forked repositories until completed. Feel free to edit the README file's Work In Progress section with a link to your repository's content.
+
+### Completed
 
 If you would like to add your own node to the repository, do the following:
 
@@ -39,14 +53,14 @@ If you would like to add your own node to the repository, do the following:
 
 7. Once you have your script and image file handy, go to the `godot_next_plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files.
 
-8. Go to the README.md file and add the name of any added nodes to the list of included nodes along with any hashtags you would like to attach (please keep it to 3 or less). The name of the node should be a relative link to its location in the repository. The name of the node should be a relative link to its location in the repository. If possible, try to find a space nearby other nodes of a similar type.
+8. Go to the README.md file and add the name of any added nodes to the list of included nodes along with any hashtags you would like to attach (please keep it to 3 or less). The name of the node should be a relative link to its location in the repository. If possible, try to find a space nearby other nodes of a similar type.
 
 9. Commit and push all of your changes
 
     1. the new directory with an UpperCamelCase name.
     2. the script file with an UpperCamelCase name (with contributor credits).
     3. the .png file with a icon\_prefixed\_snake\_case name.
-    4. the modified godot-next-plugin.gd file to add and remove your node from the editor.
+    4. the modified `godot_next_plugin.gd` file to add and remove your node from the editor.
     5. the modified README.md file to add your node to the description of the repository's content.
 
 10. Submit a pull request to the original repository
@@ -63,4 +77,11 @@ That's it! I hope you've got ideas of what you'd like to share with others.
 
 |Linkable Node Name|Description|Tags
 |-|-|-|
+|[HoverContainer](addons/godot-next/gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks|\#gui \#Control \#hover
 
+# Work In Progress Nodes
+
+These are nodes that others are actively working to contribute to the repository. Clicking the link should take you to the new node's code so-far-implemented in their forked repository.
+
+|Linkable Node Name|Description|Tags
+|-|-|-|
