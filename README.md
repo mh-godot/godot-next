@@ -15,7 +15,7 @@ Ideally, these are single nodes rather than whole systems of nodes (for that, yo
 ## How to Contribute
 
 ### Ideas
-If you have an idea for a node that you would like to have added to the repository, create a new Issue with the title "Node Proposal: [NODE NAME]".
+If you have an idea for a node that you would like to have added to the repository, create a new Issue.
 
 ### In Progress
 Work-in-progress nodes should be kept in forked repositories until completed. Feel free to edit the README file's Work In Progress section with a link to your repository's content.
