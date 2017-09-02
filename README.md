@@ -47,7 +47,7 @@ If you would like to add your own node to the repository, do the following:
 
 4. Once you've found a suitable location, create a new directory, this time using UpperCamelCase.
 
-5. Inside the new folder, attach the content necessary for your node. For GDScript, this would be a `.gd` file. For CSharp (when it's available), this would be a `.cs` file (as far as I know). For GDNative scripts, the folder should contain the `.gdns` file, a GDNativeLibrary `.tres`, and one dynamic library file for each major desktop platform (Windows, Mac OS, Linux) along with any and all custom source code (not part of the bindings) that was used to generate the dynamic libraries. **GDNative scripts that do not have builds for all three desktop platforms will be deemed INCOMPLETE and will NOT be accepted via pull request.**
+5. Inside the new folder, attach the content necessary for your node. For GDScript, this would be a `.gd` file. For CSharp (when it's available), this would be a `.cs` file (as far as I know). For GDNative scripts, the folder should contain the `.gdns` file, a GDNativeLibrary `.tres`, and one dynamic library file for each major desktop platform (Windows, Mac OS, Linux) along with any and all custom source code (not part of the bindings) that was used to generate the dynamic libraries. **For GDNative scripts, please attempt to acquire as many platforms as possible so that all nodes will be available to every user.**
 
 - Be sure to include in your node a comment at the top saying "Contributors" along with a subsequent comment detailing your GitHub username after a hyphen. For example:
 ```
