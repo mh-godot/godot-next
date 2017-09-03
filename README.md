@@ -47,33 +47,25 @@ If you would like to add your own node to the repository, do the following:
 
 4. Once you've found a suitable location, create a new directory, this time using UpperCamelCase.
 
-5. Inside the new folder, attach the content necessary for your node. For GDScript, this would be a `.gd` file. For CSharp (when it's available), this would be a `.cs` file (as far as I know). For GDNative scripts, the folder should contain the `.gdns` file, a GDNativeLibrary `.tres`, and one dynamic library file for each major desktop platform (Windows, Mac OS, Linux) along with any and all custom source code (not part of the bindings) that was used to generate the dynamic libraries. **For GDNative scripts, please attempt to acquire as many platforms as possible so that all nodes will be available to every user.**
+5. Inside the new folder, attach the content necessary for your node. For GDScript, this would be a `.gd` file.
 
 - Be sure to include in your node a comment at the top saying "Contributors" along with a subsequent comment detailing your GitHub username after a hyphen. For example:
 ```
     # Contributors
     # - willnationsdev
 ```
-- Please keep the content of your script in the appropriate style for the type of script you are making to maintain consistency. `.gd` files should use snake_case for non-script-type variable names. `.cs` files likewise should use UpperCamelCase for typenames and lowerCamelCase for variable and function names. Finally, any and all GDNative scripts should use the style conventions of the bound language. The exception to this would be GDNative C++, in which case, please use the style preferred in Godot Engine source code (snake\_case for variables/functions, UpperCamelCase for typenames). For example:
+- Please keep the content of your script in the appropriate style for the type of script you are making to maintain consistency. `.gd` files should use snake_case for non-script-type variable names. For example:
 ```
     # GDScript
     var my_var = null
     var ScriptType = preload("res://script.gd")
-
-    // CSharp
-    public int myVar = null;
-    public class MyClass {};
-
-    // GDNative C++ (if a different language, then you should use whatever convention is appropriate for that language)
-    int my_var = null;
-    class MyClass {};
 ```
 
 6. Also inside the new folder, you should have a 16x16 .png image file that appears as consistent as possible with the editor's pre-existing node images. The name of the file should follow the pattern: icon\_(snake\_case\_node\_name).png. For example, for the type MyNode, the proper name would be `icon_my_node.png`.
 
 7. Once you have your script and image file handy, go to the `godot_next_plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files. (For version 2.1 scripts, we still ask that you do this, but simply comment the line out. This way, if/when a fix is made, we will be able to easily activate them all by uncommenting.)
 
-8. Go to the README.md file and add the name of any added nodes to the list of included nodes along with any hashtags you would like to attach (please keep it to 3 or less). The name of the node should be a relative link to its location in the repository. If possible, try to find a space nearby other nodes of a similar type. For GDNative scripts, the description should specify what platforms have been made available.
+8. Go to the README.md file and add the name of any added nodes to the list of included nodes along with any hashtags you would like to attach (please keep it to 3 or less). The name of the node should be a relative link to its location in the repository. If possible, try to find a space nearby other nodes of a similar type.
 
 9. Commit and push all of your changes
 
@@ -81,7 +73,7 @@ If you would like to add your own node to the repository, do the following:
     2. the script-related file(s) with an UpperCamelCase name (with contributor credits).
     3. the .png file with a icon\_prefixed\_snake\_case name.
     4. the modified `godot_next_plugin.gd` file to add and remove your node from the editor (commented out in 2.1).
-    5. the modified README.md file to add your node to the description of the repository's content. (GDNative scripts should specify what platforms have been made available)
+    5. the modified README.md file to add your node to the description of the repository's content.
 
 10. Submit a pull request to the original repository
 
