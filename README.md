@@ -107,6 +107,6 @@ That's it! I hope you've got ideas of what you'd like to share with others.
 
 These are nodes that others are actively working to contribute to the repository. Clicking the link should take you to the new node's code so-far-implemented in their forked repository.
 
-|Linkable Node Name|Description|Tags
-|-|-|-|
+|Linkable Node Name|Description|Language|Tags
+|-|-|-|-|
 
