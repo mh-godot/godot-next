@@ -13,6 +13,7 @@ extends Node
 export(bool) var automatic = true    # Whether to automatically apply switch when settings are changed
 export(bool) var allow_cycles = true # Whether to cycle to the other end of the set when passed the edge
 export(bool) var invert = false      # Whether to invert the application function's effects
+export(bool) var reverse = false     # Whether to reverse all calls to next() and previous()
 
 export(int) var index_switch = 0 setget set_index_switch   # The index of the selected node
 export(String) var name_switch = "" setget set_name_switch # The name of the selected node
@@ -50,12 +51,18 @@ func set_name_switch(p_name):
 		name_switch = original
 
 func next():
+	if reverse:
+		previous()
+		return
 	index_switch += 1
 	if (allow_cycles): index_switch = index_switch % targets.size()
 	else: index_switch = clamp(index_switch,0,targets.size()-1)
 	if (automatic): apply()
 
 func previous():
+	if reverse:
+		next()
+		return
 	index_switch -= 1
 	if (allow_cycles): index_switch = (index_switch+targets.size()) % targets.size()
 	else: index_switch = clamp(index_switch,0,targets.size()-1)
