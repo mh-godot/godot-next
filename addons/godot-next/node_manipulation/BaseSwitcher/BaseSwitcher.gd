@@ -13,10 +13,10 @@
 
 extends Node
 
-export(bool) var automatic = true                    # Whether to automatically apply switch when settings are changed
-export(bool) var allow_cycles = true                 # Whether to cycle to the other end of the set when passed the edge
-export(bool) var invert = false                      # Whether to invert the application function's effects
-export(bool) var reverse = false                     # Whether to reverse all calls to next() and previous()
+export(bool) var automatic = true    # Whether to automatically apply switch when settings are changed
+export(bool) var allow_cycles = true # Whether to cycle to the other end of the set when passed the edge
+export(bool) var invert = false      # Whether to invert the application function's effects
+export(bool) var reverse = false     # Whether to reverse all calls to next() and previous()
 export(bool) var disabled = false setget on_disabled # Whether to toggle off the switcher's effects on its targets
 
 export var custom_disable_func = ""  # Function to call on targets when disabled
