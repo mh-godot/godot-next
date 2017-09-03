@@ -99,7 +99,9 @@ That's it! I hope you've got ideas of what you'd like to share with others.
 
 |Linkable Node Name|Description|Tags
 |-|-|-|
-|[HoverContainer](addons/godot-next/gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks|\#gui \#Control \#hover
+|[HoverContainer](addons/godot-next/gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks.|\#gui \#Control \#hover
+|[BaseSwitcher](addons/godot-next/node_manipulation/BaseSwitcher/BaseSwitcher.gd)|A generic node used to apply a state to one of a set of nodes, cycling between as needed.|\#switch \#Node \#cycle
+|[ControlSwitcher](addons/godot-next/gui/navigation/ControlSwitcher/ControlSwitcher.gd)|A node that sets only one of its Control children to be visible or in focus.|\#navigation \#Node \#cycle
 
 # Work In Progress Nodes
 
