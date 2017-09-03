@@ -69,6 +69,8 @@ If you would like to add your own node to the repository, do the following:
     class MyClass {};
 ```
 
+- Scripts will have varying degrees of efficiency / compatibility based on language, but because logistically-speaking it would be difficult to maintain multiple scripts per node, please only use one scripting language per node. If you would like to port from one language to another, make an Issue to discuss and update the community first. Priority should favor things that won't break compatibility, but should favor efficiency within that constraint. So that would mean a hierarchy of VisualScript < GDScript < C# < GDNative (with desktop/mobile/web platforms all setup). For GDNative, always preserve a non-GDNative implementation (if there is one) as a backup. GDNative also shouldn't completely replace other implementations in `godot_next_plugin.gd` until all platforms have a dynamic library prepared for use.
+
 6. Also inside the new folder, you should have a 16x16 .png image file that appears as consistent as possible with the editor's pre-existing node images. The name of the file should follow the pattern: icon\_(snake\_case\_node\_name).png. For example, for the type MyNode, the proper name would be `icon_my_node.png`.
 
 7. Once you have your script and image file handy, go to the `godot_next_plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files. (For version 2.1 scripts, we still ask that you do this, but simply comment the line out. This way, if/when a fix is made, we will be able to easily activate them all by uncommenting.)
@@ -95,11 +97,11 @@ That's it! I hope you've got ideas of what you'd like to share with others.
 
 # Nodes
 
-|Linkable Node Name|Description|Tags
-|-|-|-|
-|[HoverContainer](addons/godot-next/gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks.|\#gui \#Control \#hover
-|[BaseSwitcher](addons/godot-next/node_manipulation/BaseSwitcher/BaseSwitcher.gd)|A generic node used to apply a state to one of a set of nodes, cycling between as needed.|\#switch \#Node \#cycle
-|[ControlSwitcher](addons/godot-next/gui/navigation/ControlSwitcher/ControlSwitcher.gd)|A node that sets only one of its Control children to be visible or in focus.|\#navigation \#Node \#cycle
+|Linkable Node Name|Description|Language|Tags
+|-|-|-|-|
+|[HoverContainer](addons/godot-next/gui/containers/HoverContainer/HoverContainer.gd)|A container that emits hover events periodically along with signaling mouse clicks.|GDScript|\#gui \#Control \#hover
+|[BaseSwitcher](addons/godot-next/node_manipulation/BaseSwitcher/BaseSwitcher.gd)|A generic node used to apply a state to one of a set of nodes, cycling between as needed.|GDScript|\#switch \#Node \#cycle
+|[ControlSwitcher](addons/godot-next/gui/navigation/ControlSwitcher/ControlSwitcher.gd)|A node that sets only one of its Control children to be visible or in focus.|GDScript|\#navigation \#Node \#cycle
 
 # Work In Progress Nodes
 
