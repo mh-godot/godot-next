@@ -9,9 +9,11 @@
 
 extends "res://addons/godot-next/node_manipulation/BaseSwitcher/BaseSwitcher.gd"
 
-enum { SWITCH_VISIBILITY = 0, SWITCH_FOCUS = 1 }
+enum { SWITCH_VISIBILITY, SWITCH_FOCUS, SWITCH_CUSTOM}
 
-export(int, "Visibility", "Focus") var switch_type = SWITCH_VISIBILITY setget set_switch_type
+export(int, "Visibility", "Focus", "Custom") var switch_type = SWITCH_VISIBILITY setget set_switch_type
+
+export var custom_switch_name = ""
 
 func _enter_tree():
 	find_targets(!name_switch.empty())
@@ -22,7 +24,7 @@ func _ready():
 	apply()
 
 func set_switch_type(p_type):
-	if p_type in [SWITCH_VISIBILITY, SWITCH_FOCUS]:
+	if p_type in [SWITCH_VISIBILITY, SWITCH_FOCUS, SWITCH_CUSTOM]:
 		switch_type = p_type
 	else:
 		switch_type = SWITCH_VISIBILITY
@@ -39,10 +41,13 @@ func find_targets(p_use_name):
 				index_switch = index_switch % targets.size()
 			else:
 				index_switch = clamp(index_switch,0,targets.size()-1)
+	if (automatic): apply()
 
 func apply():
 	if switch_type == SWITCH_VISIBILITY: _apply_visibility()
 	elif switch_type == SWITCH_FOCUS: _apply_focus()
+	elif switch_type == SWITCH_CUSTOM and has_method(custom_switch_name):
+		call(custom_switch_name)
 
 func _apply_focus():
 	for i_target in range(0,targets.size()):
@@ -59,3 +64,4 @@ func _apply_visibility():
 	for i_target in range(0,targets.size()):
 		var condition = i_target == index_switch
 		targets[i_target].visible = (!condition if invert else condition)
+

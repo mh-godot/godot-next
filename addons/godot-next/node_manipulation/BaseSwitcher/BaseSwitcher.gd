@@ -51,26 +51,12 @@ func set_name_switch(p_name):
 		name_switch = original
 
 func next():
-	if reverse:
-		if !_inside_reverse:
-			_inside_reverse = true
-			previous()
-		else:
-			_inside_reverse = false
-			return
 	index_switch += 1
 	if (allow_cycles): index_switch = index_switch % targets.size()
 	else: index_switch = clamp(index_switch,0,targets.size()-1)
 	if (automatic): apply()
 
 func previous():
-	if reverse:
-		if !_inside_reverse:
-			_inside_reverse = true
-			next()
-		else:
-			_inside_reverse = false
-			return
 	index_switch -= 1
 	if (allow_cycles): index_switch = (index_switch+targets.size()) % targets.size()
 	else: index_switch = clamp(index_switch,0,targets.size()-1)
