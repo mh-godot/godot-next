@@ -28,7 +28,6 @@ export(String) var name_switch = "" setget set_name_switch # The name of the sel
 var targets = []  # The total set of nodes being examined
 
 var _is_first_update = true # Without this, "original" in setters blocks editor-defined values
-var _inside_reverse = false # Without this, reversing results in an endless loop of calls between next() and previous()
 var _has_derived_entered = false # Without this, switch_type is prematuraly set to default SWITCH_VISIBILITY during index/name_switch init
 
 # Needed for tool functionality
@@ -62,28 +61,17 @@ func set_name_switch(p_name):
 		name_switch = original
 
 func next():
-	if reversed:
-		if !_inside_reverse:
-			_inside_reverse = true
-			previous()
-		else:
-			_inside_reverse = false
-			return
-	index_switch += 1
-	if (allow_cycles): index_switch = index_switch % targets.size()
-	else: index_switch = clamp(index_switch,0,targets.size()-1)
-	if (automatic) and not disabled: apply()
+	shift(1)
 
 func previous():
-	if reversed:
-		if !_inside_reverse:
-			_inside_reverse = true
-			next()
-		else:
-			_inside_reverse = false
-			return
-	index_switch -= 1
-	if (allow_cycles): index_switch = (index_switch+targets.size()) % targets.size()
+	shift(-1)
+
+func shift(p_offset):
+	var offset = p_offset * (-1 if reversed else 1)
+	index_switch += offset
+	if (allow_cycles):
+		var mod_neg = targets.size()*abs(offset) # prevent negative modulus from staying negative
+		index_switch = (index_switch+mod_neg) % targets.size()
 	else: index_switch = clamp(index_switch,0,targets.size()-1)
 	if (automatic) and not disabled: apply()
 

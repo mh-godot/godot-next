@@ -28,6 +28,8 @@ func _ready():
 # switch_type (member variable for derived class) is not yet initialized, yet index_switch
 # and name_switch's setters are triggering find_targets()/apply() which expect this to be set.
 func set_switch_type(p_type):
+	if _has_derived_entered:
+		_revert()
 	if p_type in [SWITCH_VISIBILITY, SWITCH_FOCUS, SWITCH_CUSTOM]:
 		switch_type = p_type
 		if p_type != SWITCH_CUSTOM:
@@ -35,6 +37,8 @@ func set_switch_type(p_type):
 			custom_inverted_func = "on_inverted"
 	else:
 		switch_type = SWITCH_VISIBILITY
+		if _has_derived_entered:
+			apply()
 
 func find_targets(p_use_name):
 	targets = get_children()
@@ -75,21 +79,27 @@ func _apply_visibility():
 		targets[i_target].set_hidden( !(!condition if inverted else condition) )
 
 func on_disabled(p_disabled):
+	disabled = p_disabled
 	if not p_disabled:
 		find_targets(false)
 		apply()
 		return
-	if switch_type == SWITCH_VISIBILITY:
-		for target in targets:
-			target.set_hidden(false)
-	elif switch_type == SWITCH_FOCUS:
-		pass # do nothing, leave the currently focused UI element in focus
-	elif switch_type == SWITCH_CUSTOM and has_method(custom_disabled_func):
+	_revert()
+	if switch_type == SWITCH_CUSTOM and has_method(custom_disabled_func):
 		call(custom_disabled_func)
 
 func on_inverted(p_inverted):
+	inverted = p_inverted
 	if not p_inverted or switch_type != SWITCH_CUSTOM:
 		find_targets(false)
 		apply()
 	elif has_method(custom_inverted_func):
 		call(custom_inverted_func)
+
+func _revert():
+	if switch_type == SWITCH_VISIBILITY:
+		for target in targets:
+			target.visible = true
+	elif switch_type == SWITCH_FOCUS:
+		for target in targets:
+			target.release_focus()
