@@ -46,11 +46,14 @@ func apply():
 
 func _apply_focus():
 	for i_target in range(0,targets.size()):
-		if i_target == index_switch:
-			if invert:
+		var condition = i_target == index_switch
+		if invert:
+			if condition:
 				targets[i_target].release_focus()
 			else:
 				targets[i_target].grab_focus()
+		elif condition:
+			targets[i_target].grab_focus()
 
 func _apply_visibility():
 	for i_target in range(0,targets.size()):
