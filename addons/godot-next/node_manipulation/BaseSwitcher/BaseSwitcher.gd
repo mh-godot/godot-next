@@ -13,14 +13,10 @@ var _is_first_update = true # Without this, "original" in setters blocks editor-
 
 # Needed for tool functionality
 func _enter_tree():
-	#find_targets(!name_switch.empty())
-	#apply()
-	_is_first_update = false
+	_is_first_update = false # this will end up running LAST, after any derived version's _enter_tree methods
 
 # Needed for runtime functionality, not a big deal if it runs twice
 func _ready():
-	#find_targets(!name_switch.empty())
-	#apply()
 	pass
 
 func set_index_switch(p_index):
@@ -33,7 +29,6 @@ func set_index_switch(p_index):
 	else:
 		index_switch = original
 	
-
 func set_name_switch(p_name):
 	var original = name_switch if !_is_first_update else p_name
 	name_switch = p_name
