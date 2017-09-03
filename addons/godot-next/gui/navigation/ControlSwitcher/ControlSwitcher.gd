@@ -28,7 +28,8 @@ func set_switch_type(p_type):
 	if p_type in [SWITCH_VISIBILITY, SWITCH_FOCUS, SWITCH_CUSTOM]:
 		switch_type = p_type
 		if p_type != SWITCH_CUSTOM:
-			custom_disable_func = "on_disable"
+			custom_disabled_func = "on_disabled"
+			custom_inverted_func = "on_inverted"
 	else:
 		switch_type = SWITCH_VISIBILITY
 
@@ -57,7 +58,7 @@ func apply():
 func _apply_focus():
 	for i_target in range(0,targets.size()):
 		var condition = i_target == index_switch
-		if invert:
+		if inverted:
 			if condition:
 				targets[i_target].release_focus()
 			else:
@@ -68,7 +69,7 @@ func _apply_focus():
 func _apply_visibility():
 	for i_target in range(0,targets.size()):
 		var condition = i_target == index_switch
-		targets[i_target].visible = (!condition if invert else condition)
+		targets[i_target].visible = (!condition if inverted else condition)
 
 func on_disabled(p_disabled):
 	if not p_disabled:
@@ -80,5 +81,12 @@ func on_disabled(p_disabled):
 			target.visible = true
 	elif switch_type == SWITCH_FOCUS:
 		pass # do nothing, leave the currently focused UI element in focus
-	elif switch_type == SWITCH_CUSTOM and has_method(custom_disable_func):
-		call(custom_disable_func)
+	elif switch_type == SWITCH_CUSTOM and has_method(custom_disabled_func):
+		call(custom_disabled_func)
+
+func on_inverted(p_inverted):
+	if not p_inverted or switch_type != SWITCH_CUSTOM:
+		find_targets(false)
+		apply()
+	elif has_method(custom_inverted_func):
+		call(custom_inverted_func)
