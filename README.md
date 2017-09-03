@@ -69,8 +69,6 @@ If you would like to add your own node to the repository, do the following:
     class MyClass {};
 ```
 
-- For GDNative projects, you should provide the source code used to g
-
 6. Also inside the new folder, you should have a 16x16 .png image file that appears as consistent as possible with the editor's pre-existing node images. The name of the file should follow the pattern: icon\_(snake\_case\_node\_name).png. For example, for the type MyNode, the proper name would be `icon_my_node.png`.
 
 7. Once you have your script and image file handy, go to the `godot_next_plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files. (For version 2.1 scripts, we still ask that you do this, but simply comment the line out. This way, if/when a fix is made, we will be able to easily activate them all by uncommenting.)
