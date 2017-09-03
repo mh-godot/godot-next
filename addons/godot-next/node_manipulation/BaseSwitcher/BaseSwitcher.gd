@@ -1,3 +1,13 @@
+# Contributors
+# - willnationsdev
+# 
+# Description:
+# BaseSwitcher lets you cycle through a set of "target nodes" (for which a derived class must
+# implement a find_targets method). Then an application method is applied to all target nodes.
+# If the currently examined node matches the index of the current selection, then it should
+# behave somewhat differently from the rest. Cycling can be clamped or looped, applications
+# can be inverted and/or automatically triggered upon changes.
+
 extends Node
 
 export(bool) var automatic = true    # Whether to automatically apply switch when settings are changed

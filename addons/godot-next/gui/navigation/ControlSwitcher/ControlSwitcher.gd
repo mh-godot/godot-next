@@ -1,4 +1,13 @@
-extends "res://BaseSwitcher.gd"
+# Contributors
+# - willnationsdev
+# 
+# Description:
+# ControlSwitcher lets you cycle through all child nodes and, assuming they are Control nodes, 
+# set their visibility or focus properties accordingly as you move forward/backward in the list.
+# It also lets you invert these modifications as well as have the cycling either stop at boundaries
+# or loop back around to the other side.
+
+extends "res://addons/godot-next/node_manipulation/BaseSwitcher/BaseSwitcher.gd"
 
 enum { SWITCH_VISIBILITY = 0, SWITCH_FOCUS = 1 }
 
