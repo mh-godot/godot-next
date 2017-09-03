@@ -68,4 +68,4 @@ func find_targets(p_use_name):
 	pass
 
 func get_target():
-	return targets[index_switch]
+	return targets[index_switch] if !targets.empty() else null
