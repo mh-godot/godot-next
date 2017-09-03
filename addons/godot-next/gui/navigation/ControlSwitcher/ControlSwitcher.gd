@@ -20,7 +20,6 @@ func _enter_tree():
 func _ready():
 	find_targets(!name_switch.empty())
 	apply()
-	print(targets)
 
 func set_switch_type(p_type):
 	if p_type in [SWITCH_VISIBILITY, SWITCH_FOCUS]:
@@ -46,7 +45,6 @@ func apply():
 	elif switch_type == SWITCH_FOCUS: _apply_focus()
 
 func _apply_focus():
-	print("applying control switcher: focus")
 	for i_target in range(0,targets.size()):
 		if i_target == index_switch:
 			if invert:
@@ -55,7 +53,6 @@ func _apply_focus():
 				targets[i_target].grab_focus()
 
 func _apply_visibility():
-	print("applying control switcher: visibility")
 	for i_target in range(0,targets.size()):
 		var condition = i_target == index_switch
 		targets[i_target].visible = (!condition if invert else condition)
