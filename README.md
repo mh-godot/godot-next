@@ -54,7 +54,7 @@ If you would like to add your own node to the repository, do the following:
     # Contributors
     # - willnationsdev
 ```
-- Please keep the content of your script in the appropriate style for the type of script you are making to maintain consistency. `.gd` files should use snake_case for non-script-type variable names. `.cs` files likewise should use UpperCamelCase for typenames and lowerCamelCase for variable and function names. Finally, any and all GDNative scripts should use the style conventions of the bound language. For example:
+- Please keep the content of your script in the appropriate style for the type of script you are making to maintain consistency. `.gd` files should use snake_case for non-script-type variable names. `.cs` files likewise should use UpperCamelCase for typenames and lowerCamelCase for variable and function names. Finally, any and all GDNative scripts should use the style conventions of the bound language. The exception to this would be GDNative C++, in which case, please use the style preferred in Godot Engine source code (snake\_case for variables/functions, UpperCamelCase for typenames). For example:
 ```
     # GDScript
     var my_var = null
@@ -65,7 +65,7 @@ If you would like to add your own node to the repository, do the following:
     public class MyClass {};
 
     // GDNative C++ (if a different language, then you should use whatever convention is appropriate for that language)
-    int myVar = null;
+    int my_var = null;
     class MyClass {};
 ```
 
