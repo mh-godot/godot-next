@@ -19,7 +19,9 @@ Ideally, these are single nodes rather than whole systems of nodes (for that, yo
 
 5. Restart the engine. You should now be able to create each new type of node in your project!
 
-Note that when you add a custom type node to your node hierarchy, it may already have a script attached to it (the script associated with the custom type). **This is a bug.** You'll also see, at least in 2.1.4, that when you remove this script, the Add A Script button will still show a trash-can icon. **This is also a bug.** Thankfully, you can still assign a new script by going to the bottom of the Inspector and directly assigning a script property.
+Note that when you add a custom type node to your node hierarchy, it may already have a script attached to it (the script associated with the custom type). This **is not** a bug. Any script, even one defined by `add_custom_type`, still needs to be actually attached to the node in order for the node to still be custom. All the EditorPlugin does is change the icon, give it a default script, and add it to the "Create New Node" window (the last part only works if you use an in-engine node as a base type though).
+
+You'll also see, at least in 2.1.4, that when you remove this script, the Add A Script button in the top-right will still show a trash-can icon. This probably **is** a bug, albeit an understandable one. Thankfully, you can still assign a new script by going to the bottom of the Inspector and directly assigning a script property.
 
 Also note that when extending custom node types with scripts, those you cannot use `extends NodeType`, even if it was added via an EditorPlugin. You will need to use the path directly:
 
