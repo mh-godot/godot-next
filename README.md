@@ -7,6 +7,8 @@ As you might have noticed, Godot Engine's initial node offerings are general pur
 The intent is to create nodes that fulfill a particular function and work out-of-the-box. Users should be able to use your node immediately after adding it to their project.
 Ideally, these are single nodes rather than whole systems of nodes (for that, you might be better off building a separate repository for that system).
 
+[Jump to Node List](https://github.com/willnationsdev/godot-next#nodes)
+
 ## How to Use
 
 1. If godot-next is on the Asset Library already, simply plugin the asset from the Asset Library browser. Otherwise, download the repository as a .zip from GitHub. Unzip the archive and copy the files into your project directory (you just need to put the `godot-next` folder into the `res://addons/` directory for your project).
