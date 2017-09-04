@@ -7,10 +7,6 @@ As you might have noticed, Godot Engine's initial node offerings are general pur
 The intent is to create nodes that fulfill a particular function and work out-of-the-box. Users should be able to use your node immediately after adding it to their project.
 Ideally, these are single nodes rather than whole systems of nodes (for that, you might be better off building a separate repository for that system).
 
-## Version 2.1.4- Warning
-
-Keep in mind that Godot Engine's 2.1.4 version does not currently make the script slot on a node available when using the EditorPlugin's `add_custom_type` function. The script slot is occupied by the script that is attached to the custom type. This is **not** the case for 3.x where you can specify a custom type that starts out with the defined script, but then also allows you to attach another script on top of that using the node's script slot.
-
 ## How to Use
 
 1. If godot-next is on the Asset Library already, simply plugin the asset from the Asset Library browser. Otherwise, download the repository as a .zip from GitHub. Unzip the archive and copy the files into your project directory (you just need to put the `godot-next` folder into the `res://addons/` directory for your project).
@@ -23,7 +19,9 @@ Keep in mind that Godot Engine's 2.1.4 version does not currently make the scrip
 
 5. Restart the engine. You should now be able to create each new type of node in your project!
 
-Note that 2.1 users do not need to complete steps 3-5 above since there is relatively little benefit to be gleaned from activating the plugin (the EditorPlugin currently does nothing). Instead, in order to use one of these new nodes, they will need to create a script in their open project, and write the following:
+Note that when you add a custom type node to your node hierarchy, it may already have a script attached to it (the script associated with the custom type). **This is a bug.** You'll also see, at least in 2.1.4, that when you remove this script, the Add A Script button will still show a trash-can icon. **This is also a bug.** Thankfully, you can still assign a new script by going to the bottom of the Inspector and directly assigning a script property.
+
+Also note that when extending custom node types with scripts, those you cannot use `extends NodeType`, even if it was added via an EditorPlugin. You will need to use the path directly:
 
     extends "res://addons/godot-next/path/to/MyClass/MyClass.gd"
 
@@ -63,7 +61,7 @@ If you would like to add your own node to the repository, do the following:
 
 6. Also inside the new folder, you should have a 16x16 .png image file that appears as consistent as possible with the editor's pre-existing node images. The name of the file should follow the pattern: icon\_(snake\_case\_node\_name).png. For example, for the type MyNode, the proper name would be `icon_my_node.png`.
 
-7. Once you have your script and image file handy, go to the `godot_next_plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files. (For version 2.1 scripts, we still ask that you do this, but simply comment the line out. This way, if/when a fix is made, we will be able to easily activate them all by uncommenting.)
+7. Once you have your script and image file handy, go to the `godot_next_plugin.gd` file and add/remove the custom type using the `add_custom_type` and `remove_custom_type` methods, passing in the preloaded paths to your script and image files. Note that the second parameter, the base type of the custom node, WILL need to be the name of an in-engine node (it's a bug for now - unfortunately it makes it messier to work with nodes derived from existing custom nodes).
 
 8. Go to the README.md file and add the name of any added nodes to the list of included nodes along with any hashtags you would like to attach (please keep it to 3 or less). The name of the node should be a relative link to its location in the repository. If possible, try to find a space nearby other nodes of a similar type.
 
@@ -72,7 +70,7 @@ If you would like to add your own node to the repository, do the following:
     1. the new directory with an UpperCamelCase name.
     2. the script-related file(s) with an UpperCamelCase name (with contributor credits).
     3. the .png file with a icon\_prefixed\_snake\_case name.
-    4. the modified `godot_next_plugin.gd` file to add and remove your node from the editor (commented out in 2.1).
+    4. the modified `godot_next_plugin.gd` file to add and remove your node from the editor.
     5. the modified README.md file to add your node to the description of the repository's content.
 
 10. Submit a pull request to the original repository
