@@ -29,9 +29,6 @@ func set_switch_type(p_type):
 		_revert()
 	if p_type in [SWITCH_VISIBILITY, SWITCH_FOCUS, SWITCH_CUSTOM]:
 		switch_type = p_type
-		if p_type != SWITCH_CUSTOM:
-			custom_disabled_func = "on_disabled"
-			custom_inverted_func = "on_inverted"
 	else:
 		switch_type = SWITCH_VISIBILITY
 	if _has_derived_entered:
