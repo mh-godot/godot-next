@@ -40,13 +40,12 @@ func _ready():
 
 func set_index_switch(p_index):
 	if not _has_derived_entered: return
-	if p_index < 0: return
 	var original = index_switch if !_is_first_update else p_index
-	index_switch = p_index
+	index_switch = (p_index + (targets.size()*abs(p_index)) ) % targets.size()
 	find_targets(false)
 	# Only leave side effects if the new value results in identified targets
 	if not targets.empty():
-		name_switch = targets[p_index].get_name()
+		name_switch = targets[index_switch].get_name()
 	else:
 		index_switch = original
 	
@@ -58,7 +57,8 @@ func set_name_switch(p_name):
 	find_targets(true)
 	# Only leave side effects if the new value results in identified targets
 	if not targets.empty():
-		index_switch = targets.find(p_name)
+		var search = targets.find(p_name)
+		index_switch = search if search != -1 else index_switch
 	else:
 		name_switch = original
 
