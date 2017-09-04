@@ -37,6 +37,7 @@ func _ready():
 
 func set_index_switch(p_index):
 	if not _has_derived_entered: return
+	if p_index < 0: return
 	var original = index_switch if !_is_first_update else p_index
 	index_switch = p_index
 	find_targets(false)
@@ -48,6 +49,7 @@ func set_index_switch(p_index):
 	
 func set_name_switch(p_name):
 	if not _has_derived_entered: return
+	if p_name == "": return
 	var original = name_switch if !_is_first_update else p_name
 	name_switch = p_name
 	find_targets(true)
