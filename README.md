@@ -7,10 +7,6 @@ As you might have noticed, Godot Engine's initial node offerings are general pur
 The intent is to create nodes that fulfill a particular function and work out-of-the-box. Users should be able to use your node immediately after adding it to their project.
 Ideally, these are single nodes rather than whole systems of nodes (for that, you might be better off building a separate repository for that system).
 
-## Version 2.1.4- Warning
-
-Keep in mind that Godot Engine's 2.1.4 version does not currently make the script slot on a node available when using the EditorPlugin's `add_custom_type` function. The script slot is occupied by the script that is attached to the custom type. This is **not** the case for 3.x where you can specify a custom type that starts out with the defined script, but then also allows you to attach another script on top of that using the node's script slot.
-
 ## How to Use
 
 1. If godot-next is on the Asset Library already, simply plugin the asset from the Asset Library browser. Otherwise, download the repository as a .zip from GitHub. Unzip the archive and copy the files into your project directory (you just need to put the `godot-next` folder into the `res://addons/` directory for your project).
@@ -23,7 +19,9 @@ Keep in mind that Godot Engine's 2.1.4 version does not currently make the scrip
 
 5. Restart the engine. You should now be able to create each new type of node in your project!
 
-Note that when you add a custom type node to your node hierarchy, it may already have a script attached to it (the script associated with the custom type). This is a bug. You'll also see, at least in 2.1.4, that when you remove this script, the Add A Script button will still show a trash-can icon. This is also a bug. Thankfully, you can still assign a new script by going to the bottom of the Inspector and directly assigning a script property.
+Note that when you add a custom type node to your node hierarchy, it may already have a script attached to it (the script associated with the custom type). This **is not** a bug. Any script, even one defined by `add_custom_type`, still needs to be actually attached to the node in order for the node to still be custom. All the EditorPlugin does is change the icon, give it a default script, and add it to the "Create New Node" window (the last part only works if you use an in-engine node as a base type though).
+
+You'll also see, at least in 2.1.4, that when you remove this script, the Add A Script button in the top-right will still show a trash-can icon. This probably **is** a bug, albeit an understandable one. Thankfully, you can still assign a new script by going to the bottom of the Inspector and directly assigning a script property.
 
 Also note that when extending custom node types with scripts, those you cannot use `extends NodeType`, even if it was added via an EditorPlugin. You will need to use the path directly:
 
@@ -83,7 +81,7 @@ If you would like to add your own node to the repository, do the following:
 
     1. the new directory with an UpperCamelCase name.
     2. the script-related file(s) with an UpperCamelCase name (with contributor credits).
-    3. the .png file with a icon\_prefixed\_snake\_case name.
+    3. the .png file with an icon\_prefixed\_snake\_case name.
     4. the modified `godot_next_plugin.gd` file to add and remove your node from the editor.
     5. the modified README.md file to add your node to the description of the repository's content. (GDNative scripts should specify what platforms have been made available)
 
